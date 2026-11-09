@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101113">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Business Hub">
+<title>Belle Finition | Business Hub</title>
+<style>
+:root{color-scheme:dark;--bg:#101113;--panel:#242424;--panel2:#1b1c1e;--muted:#a7a7aa;--blue:#294762;--line:#303236;--white:#f7f7f7;--accent:#b9c9d8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:env(safe-area-inset-top) 16px calc(24px + env(safe-area-inset-bottom));}
+main{max-width:760px;margin:0 auto}.top{display:flex;align-items:center;gap:15px;padding:18px 2px 24px}.logo{width:68px;height:68px;border-radius:22px;background:var(--blue);display:grid;place-items:center;flex:none}.logo svg{width:35px;height:35px}.brand{min-width:0}.brand h1{font-size:clamp(23px,5vw,31px);letter-spacing:.02em;margin:0 0 5px;font-weight:750}.brand p{margin:0;color:#aaa;font-size:17px}.pill{margin-left:auto;border-radius:999px;background:#123b25;color:#4bd17a;padding:9px 14px;font-size:14px;white-space:nowrap}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.tile{appearance:none;border:0;text-align:left;color:var(--white);background:var(--panel);border-radius:23px;padding:20px 18px;min-height:154px;display:flex;flex-direction:column;justify-content:space-between;gap:15px;cursor:pointer;transition:transform .12s,background .12s}.tile:active{transform:scale(.98);background:#303030}.tile svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.tile strong{font-size:clamp(16px,3.8vw,21px);font-weight:650;display:block;margin-bottom:5px}.tile span{font-size:15px;color:#aaa;line-height:1.3}.section{margin:24px 2px 12px;color:#bfc1c5;font-size:12px;letter-spacing:.12em;text-transform:uppercase}.foot{color:#777;font-size:12px;text-align:center;margin:22px 0 8px}
+.overlay{position:fixed;inset:0;background:#0009;display:none;align-items:flex-end;justify-content:center;padding:12px;z-index:5}.overlay.show{display:flex}.sheet{width:min(100%,620px);max-height:88vh;overflow:auto;background:#1b1c1e;border:1px solid #383a3e;border-radius:24px;padding:20px;box-shadow:0 15px 60px #0009}.sheethead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.sheet h2{font-size:22px;margin:0}.close{background:#34363a;border:0;color:white;border-radius:50%;width:36px;height:36px;font-size:22px}.field{display:flex;flex-direction:column;gap:7px;margin:12px 0}.field label{font-size:13px;color:#b8bbc0}.field input,.field textarea,.field select{width:100%;background:#292b2e;border:1px solid #44474c;border-radius:12px;padding:13px;color:white;font:inherit}.field textarea{min-height:88px;resize:vertical}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}.action{background:#dce7f0;color:#14202a;border:0;border-radius:12px;padding:12px 16px;font-weight:700;font-size:14px}.secondary{background:#33363a;color:white}.result{background:#25282b;border-radius:12px;padding:13px;margin-top:12px;color:#e6e6e6;line-height:1.5}.checkrow{display:flex;align-items:center;gap:10px;padding:12px 4px;border-bottom:1px solid #333}.checkrow input{width:19px;height:19px;accent-color:#9eb7cc}.muted{color:#999;font-size:13px;line-height:1.5}.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.photo-grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px}
+@media(min-width:620px){body{padding-top:28px}.tile{min-height:180px;padding:25px}.tile svg{width:34px;height:34px}.tile strong{font-size:23px}.tile span{font-size:17px}}
+</style>
+</head>
+<body>
+<main>
+  <header class="top">
+    <div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M10 12v2h4v-2"/></svg></div>
+    <div class="brand"><h1>BUSINESS HUB</h1><p>Belle Finition Paint Co.</p></div>
+    <div class="pill">TOOLS</div>
+  </header>
+  <div class="grid">
+    <button class="tile" onclick="newEstimate()"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8M14 2v6h6M14 2l6 6M18 14v8M14 18h8"/></svg><div><strong>New Estimate</strong><span>Open Joist estimate workflow</span></div></button>
+    <button class="tile" onclick="openPanel('calc')"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h.01M12 19h.01"/></svg><div><strong>Paint Calculator</strong><span>Estimate coating quantities</span></div></button>
+    <button class="tile" onclick="openPhotos()"><svg viewBox="0 0 24 24"><path d="M14 4h-4L8 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-4z"/><circle cx="12" cy="13" r="3.5"/></svg><div><strong>Job Photos</strong><span>Choose or take job photos</span></div></button>
+    <button class="tile" onclick="openPanel('check')"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="19" rx="2"/><path d="M9 3V2h6v1M8 9l1.5 1.5L12 8M14 10h3M8 16l1.5 1.5L12 15M14 17h3"/></svg><div><strong>Job Checklist</strong><span>Track prep through final walk</span></div></button>
+    <button class="tile" onclick="openEmail()"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m3 6 9 7 9-7"/></svg><div><strong>Business Email</strong><span>Open a new email</span></div></button>
+    <button class="tile" onclick="openPanel('address')"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><div><strong>Customer Address</strong><span>Find an address in Maps</span></div></button>
+    <button class="tile" onclick="openPanel('text')"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-4-.9L3 21l1.9-5.5a9 9 0 1 1 16.1-4Z"/></svg><div><strong>Customer Text</strong><span>Prepare a customer message</span></div></button>
+    <button class="tile" onclick="openAI()"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="5"/><path d="M12 3v5M8 13h.01M16 13h.01M9 17h6"/></svg><div><strong>Ask ChatGPT</strong><span>Open your AI assistant</span></div></button>
+  </div>
+  <div class="section">Quick tools</div>
+  <div class="grid">
+    <button class="tile" onclick="openPanel('notes')"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h8"/></svg><div><strong>Quick Job Note</strong><span>Capture a note for a project</span></div></button>
+    <button class="tile" onclick="openSettings()"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.6a8 8 0 0 1-1.5.9l-.3 1.8h-2.8l-.3-1.8a8 8 0 0 1-1.5-.9l-1.7.6-1.4-2.4 1.4-1.1a7 7 0 0 1 0-1.8l-1.4-1.1 1.4-2.4 1.7.6a8 8 0 0 1 1.5-.9l.3-1.8h2.8l.3 1.8a8 8 0 0 1 1.5.9l1.7-.6 1.4 2.4-1.4 1.1a7 7 0 0 1 0 1.8Z"/></svg><div><strong>Hub Settings</strong><span>Set your email and preferences</span></div></button>
+  </div>
+  <p class="foot">Belle Finition Paint Co. · Your business tools in one place</p>
+</main>
+
+<div class="overlay" id="overlay" onclick="if(event.target===this)closePanel()"><section class="sheet"><div class="sheethead"><h2 id="panelTitle">Tool</h2><button class="close" onclick="closePanel()" aria-label="Close">×</button></div><div id="panelBody"></div></section></div>
+<input id="photos" type="file" accept="image/*" capture="environment" multiple hidden>
+<script>
+const $=id=>document.getElementById(id);
+function openPanel(type){$('overlay').classList.add('show');let title='',body='';
+if(type==='calc'){title='Paint Calculator';body=`<p class="muted">A simple coverage estimate. Enter the total surface area and the product's stated coverage per gallon. Adjust coats for your project.</p><div class="field"><label>Surface area (sq. ft.)</label><input id="area" type="number" min="0" placeholder="e.g. 450"></div><div class="field"><label>Coverage per gallon (sq. ft.)</label><input id="coverage" type="number" min="1" value="350"></div><div class="field"><label>Number of coats</label><input id="coats" type="number" min="1" value="2"></div><div class="actions"><button class="action" onclick="calcPaint()">Calculate gallons</button></div><div id="calcResult" class="result" hidden></div><p class="muted">This is a planning estimate, not a product specification. Actual coverage varies with substrate, texture, application method, and product.</p>`}
+if(type==='check'){title='Job Checklist';let tasks=['Confirm scope and colors','Protect floors and surrounding areas','Remove hardware / label doors and drawers','Clean and degrease surfaces','Complete repairs and sanding','Apply appropriate primer','Apply finish coats','Reinstall hardware and doors','Final inspection and touch-ups','Clean up and customer walkthrough'];body=`<p class="muted">Check items as you complete them. Progress is saved on this device.</p><div id="checks">${tasks.map((t,i)=>`<label class="checkrow"><input type="checkbox" data-task="${i}" onchange="saveChecks()"> <span>${t}</span></label>`).join('')}</div><div class="actions"><button class="action secondary" onclick="resetChecks()">Reset checklist</button></div>`}
+if(type==='address'){title='Customer Address';body=`<p class="muted">Enter the job address to open it in Apple Maps or your default maps app.</p><div class="field"><label>Address</label><input id="addr" placeholder="Street, city, state, ZIP"></div><div class="actions"><button class="action" onclick="goMaps()">Open in Maps</button></div>`}
+if(type==='text'){title='Customer Text';body=`<div class="field"><label>Customer phone number</label><input id="phone" type="tel" placeholder="(555) 555-5555"></div><div class="field"><label>Message</label><textarea id="msg" placeholder="Hi, just following up about your estimate..."></textarea></div><div class="actions"><button class="action" onclick="sendText()">Open Messages</button></div><p class="muted">This prepares the message in Messages. You review and send it yourself.</p>`}
+if(type==='notes'){title='Quick Job Note';body=`<div class="field"><label>Job / customer</label><input id="jobname" placeholder="Customer or project name"></div><div class="field"><label>Note</label><textarea id="jobnote" placeholder="Dictate or type a job note..."></textarea></div><div class="actions"><button class="action" onclick="saveNote()">Save note</button></div><div id="noteResult" class="result" hidden></div>`}
+$('panelTitle').textContent=title;$('panelBody').innerHTML=body;
+if(type==='check')loadChecks();
+}
+function closePanel(){$('overlay').classList.remove('show')}
+function calcPaint(){let a=Number($('area').value),c=Number($('coverage').value),n=Number($('coats').value);if(!(a>0&&c>0&&n>0)){alert('Enter valid area, coverage, and coat values.');return}let gallons=a*n/c,rounded=Math.ceil(gallons*10)/10;$('calcResult').hidden=false;$('calcResult').innerHTML=`Estimated quantity: <b>${rounded.toFixed(1)} gallons</b><br>Exact calculation: ${a} × ${n} ÷ ${c} = ${gallons.toFixed(2)} gallons`;}
+function loadChecks(){let saved=JSON.parse(localStorage.getItem('bf-checks')||'{}');document.querySelectorAll('[data-task]').forEach(x=>x.checked=!!saved[x.dataset.task]);}
+function saveChecks(){let s={};document.querySelectorAll('[data-task]').forEach(x=>s[x.dataset.task]=x.checked);localStorage.setItem('bf-checks',JSON.stringify(s))}
+function resetChecks(){localStorage.removeItem('bf-checks');loadChecks()}
+function goMaps(){let a=$('addr').value.trim();if(!a)return alert('Enter an address first.');location.href='https://maps.apple.com/?q='+encodeURIComponent(a)}
+function sendText(){let p=$('phone').value.trim(),m=$('msg').value.trim();if(!m)return alert('Enter a message first.');location.href='sms:'+encodeURIComponent(p)+'&body='+encodeURIComponent(m)}
+function saveNote(){let n=$('jobname').value.trim(),v=$('jobnote').value.trim();if(!v)return alert('Enter a note first.');let entry={job:n,note:v,date:new Date().toLocaleString()};let all=JSON.parse(localStorage.getItem('bf-notes')||'[]');all.unshift(entry);localStorage.setItem('bf-notes',JSON.stringify(all));$('noteResult').hidden=false;$('noteResult').textContent='Saved on this device: '+entry.date}
+function openPhotos(){$('photos').click()}
+$('photos').addEventListener('change',e=>{let files=[...e.target.files];if(!files.length)return;openPanel('photos');$('panelTitle').textContent='Selected Job Photos';$('panelBody').innerHTML='<p class="muted">Photos selected for this session. They are not uploaded or backed up by this dashboard.</p><div class="photo-grid">'+files.map(f=>`<img alt="Selected job photo" src="${URL.createObjectURL(f)}">`).join('')+'</div>';e.target.value='';});
+function newEstimate(){location.href='shortcuts://run-shortcut?name='+encodeURIComponent('New Joist Estimate')}
+function openEmail(){let email=localStorage.getItem('bf-email')||'';location.href='mailto:'+encodeURIComponent(email)}
+function openAI(){location.href='https://chatgpt.com/'}
+function openSettings(){$('overlay').classList.add('show');$('panelTitle').textContent='Hub Settings';let email=localStorage.getItem('bf-email')||'';$('panelBody').innerHTML=`<p class="muted">Optional settings for this dashboard.</p><div class="field"><label>Business email address</label><input id="setEmail" type="email" value="${email.replace(/&/g,'&amp;').replace(/"/g,'&quot;')}" placeholder="contact@yourdomain.com"></div><div class="actions"><button class="action" onclick="saveSettings()">Save settings</button></div><p class="muted">Settings and checklist progress are stored locally in this browser on this device.</p>`}
+function saveSettings(){localStorage.setItem('bf-email',$('setEmail').value.trim());alert('Settings saved.');closePanel()}
+</script>
+</body></html>
